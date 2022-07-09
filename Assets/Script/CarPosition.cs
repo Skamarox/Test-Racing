@@ -15,6 +15,17 @@ public class CarPosition : MonoBehaviour
 
     private void OnEnable()
     {
+        SetPosAndRot();
+    }
+
+    private void Update()
+    {
+        if(transform.position.y < -0.6)
+            SetPosAndRot();
+    }
+
+    private void SetPosAndRot()
+    {
         transform.position = StartPosition;
         transform.rotation = StartRotation;
     }
