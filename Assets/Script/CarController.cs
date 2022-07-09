@@ -19,7 +19,7 @@ public class CarInfo : MonoBehaviour
     [SerializeField] protected float MaxMotorTorque;
     [SerializeField] protected float BrakeTorqueValue;
     protected float MaxSteeringAngle = 30f;
-    protected bool IsBreaking = false;
+    [SerializeField] protected bool IsBreaking = false;
     protected float MotorValue;
     protected float SteeringAngle;
 }
@@ -63,9 +63,13 @@ public class CarController : CarInfo
     }
     private void CarControllParam()
     {
-        IsBreaking = Input.GetKey(KeyCode.Space);
         MotorValue = MaxMotorTorque * Controller.Vertical;
         SteeringAngle = MaxSteeringAngle * Controller.Horizontal;
+    }
+
+    public void Brake(bool value)
+    {
+        IsBreaking = value;
     }
 }
 
